@@ -1,0 +1,40 @@
+#transitionButtons {
+	border: 1px solid black;
+	width: 400px;
+	padding: 10px;
+	margin-bottom: 5px;
+}
+
+#transitionButtons .button {
+	width: 100px;
+	height: 25px;
+	border: 2px solid #ddd;
+	background: #205c90;
+	color: white;
+	text-align: center;
+	padding: 5px 10px 5px 10px;
+	display: inline;
+	margin-right: 10px;
+	border-radius: 5px;
+}
+
+#transitionButtons .button:hover {
+	background: #ddd;
+}
+
+#transitionButtons .button:active {
+	background: #75ad0a;
+}
+
+#transitionButtons .wf-state {
+	padding-bottom: 5px;
+	height: auto;
+}
+
+#transitionButtons .button-row {
+	padding-top: 10px;
+}
+
+.stateTitle {
+	text-transform: capitalize;
+}

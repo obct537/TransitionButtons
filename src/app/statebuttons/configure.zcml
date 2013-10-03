@@ -30,4 +30,10 @@
     file="browser/resources/buttons.js"
     />
 
+  <browser:resource
+    name="app.statebuttons-buttons.css"
+    file="browser/resources/buttons.css"
+    />
+
+
 </configure>
