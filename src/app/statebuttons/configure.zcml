@@ -1,0 +1,33 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    i18n_domain="app.statebuttons">
+
+  <include package="plone.app.registry" />
+
+  <genericsetup:registerProfile
+      name="default"
+      title="State buttons"
+      directory="profiles/default"
+      description="Provides a button interface for the workflow transitions."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+
+  <include package=".browser" />
+
+  <browser:page
+      name="button-settings"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      class=".controlpanel.ButtonSettingsControlPanel"
+      permission="cmf.ManagePortal"
+      />
+
+  <browser:resource
+    name="app.statebuttons-buttons.js"
+    file="browser/resources/buttons.js"
+    />
+
+</configure>

@@ -1,0 +1,10 @@
+<div id="js_info">
+    <span tal:content="view/js_info" id="allowedTransitions">
+    </span>
+    <span tal:content="view/wf_state" id="wfState">
+    </span>
+    <span tal:content="view/pageElement" id="pageElement">
+    </span>
+    <span tal:content="view/workflowDescription" id="stateDescription">
+    </span>
+</div>
