@@ -4,7 +4,7 @@
 <object name="portal_css">
 
      <stylesheet
-        id="++resource++app.statebuttons-buttons.css"
+        id="++resource++buttons.css"
         cacheable="True"
         compression="safe"
         cookable="True"
@@ -13,5 +13,5 @@
         media=""
         rel="stylesheet"
         rendering="import"
-        insert-after="ploneKss.css" />
+         />
 </object>

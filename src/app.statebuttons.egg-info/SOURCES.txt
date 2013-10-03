@@ -16,6 +16,7 @@ src/app/statebuttons/controlpanel.py
 src/app/statebuttons/interfaces.py
 src/app/statebuttons/testing.py
 src/app/statebuttons/browser/__init__.py
+src/app/statebuttons/browser/viewlets.py
 src/app/statebuttons/tests/__init__.py
 src/app/statebuttons/tests/test_example.py
 src/app/statebuttons/tests/test_robot.py

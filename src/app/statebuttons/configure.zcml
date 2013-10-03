@@ -31,7 +31,7 @@
     />
 
   <browser:resource
-    name="app.statebuttons-buttons.css"
+    name="buttons.css"
     file="browser/resources/buttons.css"
     />
 
