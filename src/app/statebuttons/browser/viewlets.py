@@ -14,7 +14,7 @@ class ButtonViewlet(ViewletBase):
 
     def getSettings(self):
         registry = queryUtility(IRegistry)
-        settings = registry.forInterface(IButtonSettings)
+        settings = registry.forInterface(IButtonSettings, False)
         return settings
 
     def getStates(self):
