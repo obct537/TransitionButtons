@@ -30,7 +30,28 @@
 
         var stateDescription = $("#stateDescription").text();
         var state = $('#wfState').text();
+        var pageElement = '';
         
+
+        // Makes sure the pageElement property is set
+        if( $('#pageElement').text() )
+        {
+            var name = $('#pageElement').text();
+
+            // Checks the user-inputted page element
+            if( $(name).length != 0 )
+            {
+                pageElement = $(name);
+            }
+            else
+            {
+                pageElement = $('#portal-breadcrumbs');
+            }
+        }        
+        else
+        {
+            pageElement = $('#portal-breadcrumbs');
+        }
         // FUTURE:  Possible interface to select all allowed transitions?
         //          Also, include a "add to panel" button on create transition page?
         //          Prevent anyting from showing up if there's no selectable buttons.
@@ -73,6 +94,6 @@
 	    })
 
         html = html + '</div></div>';
-        $('#portal-breadcrumbs').prepend(html);   	
+        $(pageElement).prepend(html);   	
     });
 })(jQuery);
