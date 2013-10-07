@@ -81,19 +81,21 @@
 
         html = html + 
         '<h3>State: <span class="stateTitle" >' + state +'</span></h3>' +
-        '<p>' + stateDescription + '</p>' + 
-        '<div class="button-row">';
+        '<p class="tbText">' + stateDescription + '</p>' + 
+        '<div class="button-row"></div></div>';
+
+        $(html).insertBefore(pageElement);
 
     	$(buttons).each(function() {
 
-    		html = html +
-            "<a href='" + $(this).attr('href') + "'>" + 
-            "<div class='button'>" + $(this).text() + "</div>" +
-	    	"</a>";
+            var thisButton =
+            '<button class="button"' +
+            'onclick="window.location.href=\'' + $(this).attr('href') + '\'">' +
+            $(this).text() +
+            '</button>';
 
+            $('.button-row').append($(thisButton));
 	    })
-
-        html = html + '</div></div>';
-        $(pageElement).prepend(html);   	
+   	
     });
 })(jQuery);
