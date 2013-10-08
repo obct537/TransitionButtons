@@ -85,7 +85,7 @@
     	$(buttons).each(function() {
 
             var thisButton =
-            '<button class="button' +
+            '<button class="button" ' +
             'onclick="window.location.href=\'' + $(this).attr('href') + '\'">' +
             $(this).text() +
             '</button>';

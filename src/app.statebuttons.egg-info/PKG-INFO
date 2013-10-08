@@ -1,6 +1,6 @@
 Metadata-Version: 1.0
 Name: app.statebuttons
-Version: 1.0
+Version: .3
 Summary: Adds a button interface for the different state ttransitions
 Home-page: http://svn.plone.org/svn/collective/
 Author: UNKNOWN
