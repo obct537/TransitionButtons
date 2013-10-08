@@ -6,14 +6,15 @@
     purge="False">
 
     <configlet
-        title="Transition buttons"
+        title="Statebuttons"
         action_id="statebuttons"
         appId="app.statebuttons"
         category="Products"
         condition_expr=""
         url_expr="string:${portal_url}/@@button-settings"
         visible="True"
-        i18n:attributes="title">
+        i18n:attributes="title"
+        >
             <permission>Manage portal</permission>
     </configlet>
 

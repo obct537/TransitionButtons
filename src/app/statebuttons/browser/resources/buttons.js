@@ -52,10 +52,6 @@
         {
             pageElement = $('#portal-breadcrumbs');
         }
-        // FUTURE:  Possible interface to select all allowed transitions?
-        //          Also, include a "add to panel" button on create transition page?
-        //          Prevent anyting from showing up if there's no selectable buttons.
-    	
 
         $(allowed_transitions).each(function() {
             allowed.push(base + modify_url_string + this);
@@ -89,7 +85,7 @@
     	$(buttons).each(function() {
 
             var thisButton =
-            '<button class="button"' +
+            '<button class="button' +
             'onclick="window.location.href=\'' + $(this).attr('href') + '\'">' +
             $(this).text() +
             '</button>';

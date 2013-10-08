@@ -1,4 +1,4 @@
-<div id="js_info">
+<div id="js_info" style="visibility: hidden">
     <span tal:content="view/js_info" id="allowedTransitions">
     </span>
     <span tal:content="view/wf_state" id="wfState">

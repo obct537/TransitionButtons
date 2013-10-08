@@ -9,15 +9,11 @@ _ = MessageFactory('app.statebuttons')
 
 
 class IButtonSettings(Interface):
-    """Global akismet settings. This describes records stored in the
-    configuration registry and obtainable via plone.registry.
+    """Global settings for the transition button panel. Settings stored in the 
+       Plone registry
     """
 
-    button_name = schema.TextLine(title=_(u"Akismet (Wordpress) Key"),
-                                  description=_(u"help_akismet_key",
-                                                default=u"Enter in your Wordpress key here to "
-                                                         "use Akismet to check for spam in comments."),
-                                  required=False,
-                                  default=u'',)
-
-    pageElement = schema.TextLine(title=u'Site element.', default=u'#portalBreadcrumbs')
+    pageElement = schema.TextLine(title=u'Site element.', 
+                                  default=u'#portalBreadcrumbs',
+                                  description=u'Enter a CSS selector to attach the button box to.',
+                                  required=False,)

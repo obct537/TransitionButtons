@@ -1,11 +1,10 @@
 #transitionButtons {
 	border: 1px solid black;
-	
+	width: 400px;
 	padding: 10px;
 	margin-bottom: 5px;
 	text-decoration: none;
 	font-weight: normal;
-	margin-left: 70%;
 	overflow: auto;
 }
 
@@ -15,10 +14,14 @@
 	text-align: center;
 	padding: 5px 10px 5px 10px;
 	display: inline;
-	margin: 10px 10px 10px 0;
+	margin: 0 10px 0 0;
 	border-radius: 5px;
 	clear: both;
 	color: white;
+}
+
+.button-row {
+	padding: 0;
 }
 
 #transitionButtons .button:hover {
