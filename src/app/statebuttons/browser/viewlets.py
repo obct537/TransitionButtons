@@ -11,6 +11,20 @@ import json
 class ButtonViewlet(ViewletBase):
     render = ViewPageTemplateFile('js_viewlet.pt')
     settings = [];
+    validTransitions = False
+    wfState = False
+    pageElement = False
+    workflowDescription = False
+
+    def getAuthenticatedUser(self):
+        memTool = getToolByName(self, 'portal_membership')
+        currentMember = memTool.getAuthenticatedMember()
+
+
+        if( currentMember != False ):
+            return currentMember
+        else:
+            return False
 
     def getSettings(self):
         registry = queryUtility(IRegistry)
@@ -85,10 +99,19 @@ class ButtonViewlet(ViewletBase):
 
         #import pdb; pdb.set_trace()
 
+        member = self.getAuthenticatedUser()
+
+        if( member == False or member.getUserName() == 'Anonymous User' ):
+            # user isn't logged in
+            return False
+        if( not member.buttonsEnabled ):
+            # user opted out of the button panel
+            return False
+
         settings = self.getSettings()
 
-        self.js_info = self.getTransitions
-        self.wf_state = self.getWFState
+        self.validTransitions = self.getTransitions
+        self.wfState = self.getWFState
         self.pageElement = settings.pageElement
         self.workflowDescription = self.getStateDescription
 

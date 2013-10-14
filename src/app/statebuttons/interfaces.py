@@ -14,6 +14,6 @@ class IButtonSettings(Interface):
     """
 
     pageElement = schema.TextLine(title=u'Site element.', 
-                                  default=u'#portalBreadcrumbs',
+                                  default=u'#portal-breadcrumbs',
                                   description=u'Enter a CSS selector to attach the button box to.',
                                   required=False,)

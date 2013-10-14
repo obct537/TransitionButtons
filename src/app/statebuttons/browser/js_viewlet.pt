@@ -1,7 +1,7 @@
 <div id="js_info" style="visibility: hidden">
-    <span tal:content="view/js_info" id="allowedTransitions">
+    <span tal:content="view/validTransitions" id="allowedTransitions">
     </span>
-    <span tal:content="view/wf_state" id="wfState">
+    <span tal:content="view/wfState" id="wfState">
     </span>
     <span tal:content="view/pageElement" id="pageElement">
     </span>
