@@ -4,3 +4,12 @@ Changelog
 .30
 =========
 Actually started logging changes.
+
+.8
+=========
+Version number change to more accurately reflect progress
+
+.8.5
+=========
+Added the ability to opt out of the button panel in user preferences.
+Added code to prevent button panel from appearing to un-authenticated users.
