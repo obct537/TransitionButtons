@@ -33,6 +33,13 @@
         var pageElement = '';
         
 
+        if( allowed_transitions == false || stateDescription == false || state == false )
+        {
+            // this prevents JS from doing any more than it needs to if 
+            // something went wrong on the Python side.
+            return 0;
+        }
+
         // Makes sure the pageElement property is set
         if( $('#pageElement').text() )
         {

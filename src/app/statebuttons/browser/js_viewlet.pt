@@ -1,4 +1,6 @@
-<div id="js_info" style="visibility: hidden">
+<div id="js_info" style="visibility: hidden" tal:condition="view/isPanelEnabled">
+	<span tal:content="view/isEnabled" id="isEnabled">
+	</span>
     <span tal:content="view/validTransitions" id="allowedTransitions">
     </span>
     <span tal:content="view/wfState" id="wfState">

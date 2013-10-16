@@ -21,4 +21,5 @@ class IEnhancedUserDataSchema(IUserDataSchema):
     buttonsEnabled = schema.Bool(title=u'Transition buttons', 
                                 default=True,
                                 description=u'Uncheck to remove the transition button box from ALL pages.',
+                                required=False
                                 )

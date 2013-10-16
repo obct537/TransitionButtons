@@ -10,44 +10,20 @@ import json
 
 class ButtonViewlet(ViewletBase):
     render = ViewPageTemplateFile('js_viewlet.pt')
-    settings = [];
-    validTransitions = False
-    wfState = False
-    pageElement = False
-    workflowDescription = False
+    settings = []
 
-    def getAuthenticatedUser(self):
+    def isPanelEnabled(self):
+        #import pdb; pdb.set_trace()
+
         memTool = getToolByName(self, 'portal_membership')
-        currentMember = memTool.getAuthenticatedMember()
+        user = memTool.getAuthenticatedMember()
 
-
-        if( currentMember != False ):
-            return currentMember
-        else:
-            return False
+        return user.getProperty('buttonsEnabled')
 
     def getSettings(self):
         registry = queryUtility(IRegistry)
         settings = registry.forInterface(IButtonSettings, False)
         return settings
-
-    def getStates(self):
-
-        stateList = [];
-
-        wf_tool = getToolByName(self, 'portal_workflow')
-        defaultWorkflow = wf_tool.getChainForPortalType(self.context)
-
-        states = wf_tool[ defaultWorkflow[0] ].states
-
-        if states:
-
-            for state in states:
-                stateList.append(state)
-
-            return stateList
-        else:
-            return False
 
     def getWFState(self):
         wf_tool = getToolByName(self, 'portal_workflow')
@@ -97,19 +73,14 @@ class ButtonViewlet(ViewletBase):
         
     def update(self):
 
-        #import pdb; pdb.set_trace()
-
-        member = self.getAuthenticatedUser()
-
-        if( member == False or member.getUserName() == 'Anonymous User' ):
-            # user isn't logged in
-            return False
-        if( not member.buttonsEnabled ):
-            # user opted out of the button panel
-            return False
+        # if the user has disabled the panel, don't
+        # bother with the rest of this stuff
+        if( not self.isPanelEnabled() ):
+            return 0
 
         settings = self.getSettings()
 
+        self.isEnabled = self.isPanelEnabled()
         self.validTransitions = self.getTransitions
         self.wfState = self.getWFState
         self.pageElement = settings.pageElement
