@@ -1,6 +1,13 @@
 (function($) {
     $(document).ready(function() {
 
+        // If the info viewlet isn't here, 
+        // stop right away.
+        if( $('#js_info').length < 1 )
+        {
+            return 0;
+        }
+
         // This is needed since some URL's end in a slash,
         // and some don't
         function stripSlash(url) {
@@ -31,14 +38,7 @@
         var stateDescription = $("#stateDescription").text();
         var state = $('#wfState').text();
         var pageElement = '';
-        
-
-        if( allowed_transitions == false || stateDescription == false || state == false )
-        {
-            // this prevents JS from doing any more than it needs to if 
-            // something went wrong on the Python side.
-            return 0;
-        }
+        var editUrl = $('a[href="' + base + '/edit"]');
 
         // Makes sure the pageElement property is set
         if( $('#pageElement').text() )
@@ -73,12 +73,17 @@
     		}
     	});
 
+        if( $(editUrl).length > 1 )
+        {
+            buttons.push($(editUrl));
+        }
+
         if( buttons.length < 1 )
         {
             return 0;
         }
 
-    	buttons.push($('a[href="' + base + '/edit"]'));
+
 
         var html ="<div id='transitionButtons'>";
 

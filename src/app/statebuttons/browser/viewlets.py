@@ -13,13 +13,13 @@ class ButtonViewlet(ViewletBase):
     settings = []
 
     def isPanelEnabled(self):
-        #import pdb; pdb.set_trace()
 
         memTool = getToolByName(self, 'portal_membership')
         user = memTool.getAuthenticatedMember()
 
         return user.getProperty('buttonsEnabled')
 
+    # gets the settings from the add-on control panel
     def getSettings(self):
         registry = queryUtility(IRegistry)
         settings = registry.forInterface(IButtonSettings, False)
