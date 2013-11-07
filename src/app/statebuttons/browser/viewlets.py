@@ -3,6 +3,8 @@ from plone.app.layout.viewlets.common import ViewletBase
 from Products.CMFCore.utils import getToolByName
 from app.statebuttons.interfaces import IButtonSettings
 
+from AccessControl.PermissionRole import rolesForPermissionOn
+
 from zope.component import queryUtility
 from plone.registry.interfaces import IRegistry
 from string import split
@@ -49,6 +51,8 @@ class ButtonViewlet(ViewletBase):
 
         try:
             # defaultWorkflow is a tuple, so we need to take the index of it
+            # 
+            # TODO: fix for sites with multiple simultaneous workflows?
             desc = wf_tool[ defaultWorkflow[0] ].states[state].description
         except:
             return False
@@ -67,10 +71,53 @@ class ButtonViewlet(ViewletBase):
             for transition in transitions:
                 transitionList.append(transition)
 
-            return json.dumps(transitionList, sort_keys=False)
+            return transitionList
         else:
             return False
-        
+
+    def getRolesWithPermission(self):
+        pUrl = getToolByName(self, 'portal_url')
+        portal = pUrl.getPortalObject()
+        roles = rolesForPermissionOn('View', self.context)
+        memTool = getToolByName(self.context, 'portal_membership')
+
+        members = memTool.listMembers()
+        allowedMembers = []
+
+        for mem in members:
+            for role in roles:
+                if( mem.has_role(role) == 1 ):
+
+                    # If member's fullname isn't set, use their ID
+                    name = mem.getProperty('fullname')
+                    if( name != "" ):
+                        allowedMembers.append(name)
+                    else:
+                        allowedMembers.append( mem.getProperty('id') )
+                    # We don't need to check this user again.
+                    break
+
+        memberList = json.dumps(allowedMembers, sort_keys=False)
+
+        return roles
+
+    def setJson(self):
+
+        panelSettings = self.getSettings()
+
+        settings = {}
+        settings["isPanelEnabled"] = self.isPanelEnabled()
+        settings["allowedTransitions"] = self.getTransitions()
+        settings["wfState"] = self.getWFState() 
+        settings["stateDescription"] = self.getStateDescription()
+        settings["pageElement"] = panelSettings.pageElement
+        settings["isFixed"] = panelSettings.fixed
+
+        if( panelSettings.enableSharing ):
+            settings["rolesWithPermission"] = self.getRolesWithPermission()
+
+        return json.dumps(settings, sort_keys=False)
+
     def update(self):
 
         # if the user has disabled the panel, don't
@@ -78,12 +125,5 @@ class ButtonViewlet(ViewletBase):
         if( not self.isPanelEnabled() ):
             return 0
 
-        settings = self.getSettings()
-
-        self.isEnabled = self.isPanelEnabled()
-        self.validTransitions = self.getTransitions
-        self.wfState = self.getWFState
-        self.pageElement = settings.pageElement
-        self.workflowDescription = self.getStateDescription
-
+        self.buttonJson = self.setJson()
 

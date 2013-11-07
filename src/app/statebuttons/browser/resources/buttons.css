@@ -49,4 +49,14 @@
 
 .stateTitle {
 	text-transform: capitalize;
+	border-radius: 0.25em;
+	color: white;
+	padding: 2px;
+}
+
+#transitionButtons .floating {
+	position: fixed;
+	right: 20px;
+	background-color: white;
+	z-index: 10;
 }

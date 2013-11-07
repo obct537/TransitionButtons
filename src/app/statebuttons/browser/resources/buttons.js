@@ -8,6 +8,19 @@
             return 0;
         }
 
+        var json = $('#buttonJson').text();
+        var settings = jQuery.parseJSON( json );
+
+        if( settings.length < 1 )
+        {
+            return 0;
+        }
+        var stateDescription = settings.stateDescription;
+        var allowed_transitions = settings.allowedTransitions;
+        var state = settings.wfState;
+        var pageElement = settings.pageElement;
+        var fixed = settings.isFixed;
+
         // This is needed since some URL's end in a slash,
         // and some don't
         function stripSlash(url) {
@@ -20,25 +33,22 @@
             }
         }
 
-    	var base = stripSlash($("base").attr("href"));
+        var base = stripSlash($("base").attr("href"));
 
-        //Since this is referring to links generated internally, and not by a theme,
-        //this shouldn't change anytime soon.
+        // Since this is referring to links generated internally, and not by a theme,
+        // this shouldn't change anytime soon.
         var modify_url_string = "/content_status_modify?workflow_action=";
 
-        //This works by grabbing every <a> that has an href matching the 
-        //URI corresponding to the transition state methods
+        // This works by grabbing every <a> that has an href matching the 
+        // URI corresponding to the given transitions
         var transitions = $("a[href^='" + base + modify_url_string + "']");
-        var allowed_transitions = jQuery.parseJSON( $("#allowedTransitions").text() );
 
-    	var buttons = [];
+        var buttons = [];
         var allowed = [];
         var transitionClassNames = [];
 
-        var stateDescription = $("#stateDescription").text();
-        var state = $('#wfState').text();
-        var pageElement = '';
-        var editUrl = $('a[href="' + base + '/edit"]');
+        // Being very careful to grab the correct edit link
+        var editUrl = $('#edit-bar').find('#contentview-edit').find('a');
 
         // Makes sure the pageElement property is set
         if( $('#pageElement').text() )
@@ -64,37 +74,35 @@
             allowed.push(base + modify_url_string + this);
         });
 
-    	transitions.each(function() {
+        transitions.each(function() {
 
-    		// if statement checks that the links text is allowed
-    		if( $.inArray($(this).attr('href'), allowed) >= 0 )
-    		{
+            // if statement checks that the links text is allowed
+            if( $.inArray($(this).attr('href'), allowed) >= 0 )
+            {
                 buttons.push( this );
-    		}
-    	});
+            }
+        });
 
-        if( $(editUrl).length > 1 )
+        if( $(editUrl).length > 0 )
         {
-            buttons.push($(editUrl));
+            buttons.push(editUrl);
         }
-
-        if( buttons.length < 1 )
+        if( buttons.length <= 1 )
         {
+
             return 0;
         }
-
-
 
         var html ="<div id='transitionButtons'>";
 
         html = html + 
-        '<h3>State: <span class="stateTitle" >' + state +'</span></h3>' +
+        '<h4>This page\'s workflow state is: <span class="stateTitle" >' + state +'</span></h4>' +
         '<p class="tbText">' + stateDescription + '</p>' + 
         '<div class="button-row"></div></div>';
 
         $(html).insertBefore(pageElement);
 
-    	$(buttons).each(function() {
+        $(buttons).each(function() {
 
             var thisButton =
             '<button class="button" ' +
@@ -103,7 +111,17 @@
             '</button>';
 
             $('.button-row').append($(thisButton));
-	    })
-   	
+        })
+
+        var currentState = $('.state-' + state.toLowerCase() );
+        stateColor = currentState.css('background-color');
+        $('.stateTitle').css('background-color', stateColor);
+
+        // add class to make the box "float"
+        if( fixed )
+        {
+            $('#transitionButton').addClass('floating');
+        }
+    
     });
 })(jQuery);
