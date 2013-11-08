@@ -1,12 +1,4 @@
 <div id="js_info" style="visibility: hidden" tal:condition="view/isPanelEnabled">
-	<span tal:content="view/isEnabled" id="isEnabled">
+	<span tal:content="view/buttonJson" id="buttonJson">
 	</span>
-    <span tal:content="view/validTransitions" id="allowedTransitions">
-    </span>
-    <span tal:content="view/wfState" id="wfState">
-    </span>
-    <span tal:content="view/pageElement" id="pageElement">
-    </span>
-    <span tal:content="view/workflowDescription" id="stateDescription">
-    </span>
 </div>

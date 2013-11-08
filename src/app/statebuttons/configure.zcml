@@ -26,7 +26,7 @@
       />
 
   <browser:resource
-    name="app.statebuttons-buttons.js"
+    name="transitionbuttons.js"
     file="browser/resources/buttons.js"
     />
 
