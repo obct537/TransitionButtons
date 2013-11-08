@@ -18,12 +18,13 @@ class ButtonViewlet(ViewletBase):
 
         memTool = getToolByName(self, 'portal_membership')
         user = memTool.getAuthenticatedMember()
-        res = user.getProperty)('buttonsEnabled')
+        res = user.getProperty('buttonsEnabled')
 
-        if( res.isObject() ):
+        if( res == False or res == True ):
+            return res
+        else:
+            #If the setting isn't set yet, it returns an object instead of true/false
             return False
-        elif( res == "False" or res == "True" ):
-            return res 
 
 
     # gets the settings from the add-on control panel

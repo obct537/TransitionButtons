@@ -57,6 +57,7 @@ class BaseTest(unittest.TestCase):
         app = self.layer['app']
 
         self.browser = Browser(app)
+        self.browser.handleErrors = False
 
         self.browser.addHeader('Authorization', 'Basic %s:%s' % (TEST_USER_NAME, TEST_USER_PASSWORD,))
 
