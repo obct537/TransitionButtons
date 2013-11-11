@@ -117,7 +117,7 @@ class ButtonViewlet(ViewletBase):
         settings["wfState"] = self.getWFState() 
         settings["stateDescription"] = self.getStateDescription()
         settings["pageElement"] = panelSettings.pageElement
-        settings["isFixed"] = panelSettings.fixed
+        settings["floating"] = panelSettings.floating
 
         if( panelSettings.enableSharing ):
             settings["rolesWithPermission"] = self.getRolesWithPermission()

@@ -19,7 +19,7 @@
         var allowed_transitions = settings.allowedTransitions;
         var state = settings.wfState;
         var pageElement = settings.pageElement;
-        var fixed = settings.isFixed;
+        var fixed = settings.floating;
 
         // This is needed since some URL's end in a slash,
         // and some don't

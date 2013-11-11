@@ -56,7 +56,8 @@
 
 #transitionButtons.floating {
 	position: fixed;
-	right: 20px;
+	right: 5px;
+	bottom: 5px;
 	background-color: white;
 	z-index: 10;
 }

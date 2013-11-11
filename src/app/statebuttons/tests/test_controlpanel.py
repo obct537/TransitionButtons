@@ -52,6 +52,6 @@ class TestControlPanel(BaseTest):
         bv = self.buttonViewlet
         settings = bv.getSettings()
 
-        self.assertTrue(settings.fixed == True)
+        self.assertTrue(settings.floating == True)
 
 
