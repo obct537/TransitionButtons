@@ -27,7 +27,7 @@ class TestMethods(BaseTest):
     def test_js(self):
     	portal = self.layer['portal']
     	js_reg = getToolByName(portal, 'portal_javascripts')
-    	self.assertTrue('transitionbuttons.js' in js_reg.getResourceIds())
+    	self.assertTrue('++resource++transitionbuttons.js' in js_reg.getResourceIds())
 
     def test_isPanelEnabled(self):
         portal = self.layer['portal']

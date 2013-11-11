@@ -42,4 +42,16 @@ class TestControlPanel(BaseTest):
 
         self.assertTrue(settings.pageElement == u"empty")
 
+    def test_isFixed(self):
+        portal = self.layer['portal']
+        browser = self.browser
+        self.getControlPanel()
+        browser.getControl('Floating button box.').selected = True
+        browser.getControl('Save').click()
+
+        bv = self.buttonViewlet
+        settings = bv.getSettings()
+
+        self.assertTrue(settings.fixed == True)
+
 

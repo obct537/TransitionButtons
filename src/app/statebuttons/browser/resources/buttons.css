@@ -54,7 +54,7 @@
 	padding: 2px;
 }
 
-#transitionButtons .floating {
+#transitionButtons.floating {
 	position: fixed;
 	right: 20px;
 	background-color: white;

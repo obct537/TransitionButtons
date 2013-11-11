@@ -120,7 +120,7 @@
         // add class to make the box "float"
         if( fixed )
         {
-            $('#transitionButton').addClass('floating');
+            $('#transitionButtons').addClass('floating');
         }
     
     });
