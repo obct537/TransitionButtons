@@ -18,7 +18,7 @@ class IEnhancedUserDataSchema(IUserDataSchema):
     extra fields.
     """
 
-    buttonsEnabled = schema.Bool(title=u'Transition buttons', 
+    buttonsEnabled = schema.Bool(title=u'Transition button widget.', 
                                 default=True,
                                 description=u'Uncheck to remove the transition button box from ALL pages.',
                                 required=False
