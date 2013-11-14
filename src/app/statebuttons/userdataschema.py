@@ -1,19 +1,10 @@
-from plone.app.users.userdataschema import IUserDataSchemaProvider
-from plone.app.users.userdataschema import IUserDataSchema
-from zope.interface import Interface, implements
+
+from plone.app.users.browser.personalpreferences import IPersonalPreferences
+from zope.interface import Interface
 from zope import schema
 
 
-class UserDataSchemaProvider(object):
-    implements(IUserDataSchemaProvider)
-
-    def getSchema(self):
-        """
-        """
-        return IEnhancedUserDataSchema
-
-
-class IEnhancedUserDataSchema(IUserDataSchema):
+class IEnhancedUserDataSchema(IPersonalPreferences):
     """ Use all the fields from the default user data schema, and add various
     extra fields.
     """

@@ -4,6 +4,7 @@
     <utility
       interface="plone.app.users.browser.personalpreferences.IPersonalPreferences"
       factory="app.statebuttons.userdataschema.UserDataSchemaProvider"
+      remove="True"
     />
   </utilities>
 </componentregistry>

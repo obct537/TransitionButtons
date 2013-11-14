@@ -16,6 +16,14 @@
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
 
+  <genericsetup:registerProfile
+    name="uninstall"
+    title="app.statebuttons uninstall"
+    directory="profiles/uninstall"
+    description="Uninstalls the app.statebuttons package"
+    provides="Products.GenericSetup.interfaces.EXTENSION"
+    />
+
   <include package=".browser" />
 
   <browser:page
