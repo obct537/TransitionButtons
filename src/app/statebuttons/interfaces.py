@@ -28,3 +28,8 @@ class IButtonSettings(Interface):
                                 description=u'Enter a CSS selector to attach the button box to. If floating is enabled, this \
                                 option does nothing.',
                                 required=False,)
+
+class IButtonConfigLayer(Interface):
+    """ Use all the fields from the default user data schema, and add various
+    extra fields.
+    """
