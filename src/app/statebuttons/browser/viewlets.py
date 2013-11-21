@@ -81,32 +81,6 @@ class ButtonViewlet(ViewletBase):
         else:
             return False
 
-    def getRolesWithPermission(self):
-        pUrl = getToolByName(self, 'portal_url')
-        portal = pUrl.getPortalObject()
-        roles = rolesForPermissionOn('View', self.context)
-        memTool = getToolByName(self.context, 'portal_membership')
-
-        members = memTool.listMembers()
-        allowedMembers = []
-
-        for mem in members:
-            for role in roles:
-                if( mem.has_role(role) == 1 ):
-
-                    # If member's fullname isn't set, use their ID
-                    name = mem.getProperty('fullname')
-                    if( name != "" ):
-                        allowedMembers.append(name)
-                    else:
-                        allowedMembers.append( mem.getProperty('id') )
-                    # We don't need to check this user again.
-                    break
-
-        memberList = json.dumps(allowedMembers, sort_keys=False)
-
-        return roles
-
     def setJson(self):
 
         panelSettings = self.getSettings()
@@ -118,9 +92,6 @@ class ButtonViewlet(ViewletBase):
         settings["stateDescription"] = self.getStateDescription()
         settings["pageElement"] = panelSettings.pageElement
         settings["floating"] = panelSettings.floating
-
-        if( panelSettings.enableSharing ):
-            settings["rolesWithPermission"] = self.getRolesWithPermission()
 
         return json.dumps(settings, sort_keys=False)
 
