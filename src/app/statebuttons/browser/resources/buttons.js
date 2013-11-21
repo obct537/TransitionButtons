@@ -51,23 +51,9 @@
         var editUrl = $('#edit-bar').find('#contentview-edit').find('a');
 
         // Makes sure the pageElement property is set
-        if( $('#pageElement').text() )
+        if($(pageElement).text() == "")
         {
-            var name = $('#pageElement').text();
-
-            // Checks the user-inputted page element
-            if( $(name).length != 0 )
-            {
-                pageElement = $(name);
-            }
-            else
-            {
-                pageElement = $('#portal-breadcrumbs');
-            }
-        }        
-        else
-        {
-            pageElement = $('#portal-breadcrumbs');
+            pageElement = "#portal-breadcrumbs";
         }
 
         $(allowed_transitions).each(function() {

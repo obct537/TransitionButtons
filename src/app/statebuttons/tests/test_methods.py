@@ -29,6 +29,11 @@ class TestMethods(BaseTest):
     	js_reg = getToolByName(portal, 'portal_javascripts')
     	self.assertTrue('++resource++transitionbuttons.js' in js_reg.getResourceIds())
 
+    def test_css(self):
+        portal = self.layer['portal']
+        css_reg = getToolByName(portal, 'portal_css')
+        self.assertTrue('++resource++buttons.css' in css_reg.getResourceIds())
+
     def test_isPanelEnabled(self):
         portal = self.layer['portal']
         login(portal, TEST_USER_NAME)
@@ -56,8 +61,6 @@ class TestMethods(BaseTest):
     def test_getStateDescription(self):
         portal = self.layer['portal']
         login(portal, TEST_USER_NAME)
-        #import pdb; pdb.set_trace()
-
         bv = self.buttonViewlet
         desc = bv.getStateDescription()
         self.assertEqual(desc, 'Can only be seen and edited by the owner.')

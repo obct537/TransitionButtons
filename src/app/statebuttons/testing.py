@@ -78,12 +78,8 @@ class BaseTest(unittest.TestCase):
         wfTool.setDefaultChain('simple_publication_workflow')
 
         self.buttonViewlet = ButtonViewlet(self.doc, request, view)
-
         import transaction
         transaction.commit()
-
-
-
         pushGlobalRegistry(portal)
 
     def tearDown(self):
@@ -96,4 +92,9 @@ class BaseTest(unittest.TestCase):
 
         self.browser.open(request.URL)
 
+    def getPreferencesPanel(self):
+        request = self.layer['request']
+        request.set('URL', "http://nohost/plone/@@personal-preferences")
+
+        self.browser.open(request.URL)
 
