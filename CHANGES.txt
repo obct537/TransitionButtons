@@ -1,7 +1,13 @@
 Changelog
 =========
 
-.90
+.9.5
+=========
+Created "close" button to allow users to quickly remove the button box
+if they want to. 
+Added further tests.
+
+.9
 =========
 Created setting to make the button box "float" on the page.
 Setup unit testing, added tests.
@@ -14,7 +20,7 @@ Added code to prevent button panel from appearing to un-authenticated users.
 
 .8
 =========
-Version number change to more accurately reflect progress
+Arbitrary version number change to more accurately reflect progress
 
 .30
 =========
