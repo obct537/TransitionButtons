@@ -40,7 +40,7 @@ setup(name='app.statebuttons',
       zip_safe=False,
       install_requires=[
           'setuptools',
-          'collective.js.jqueryui',
+          'collective.js.jqueryui>=1.10.1.2',
           # -*- Extra requirements: -*-
       ],
       extras_require={'test': ['plone.app.testing']},
