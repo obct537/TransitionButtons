@@ -73,6 +73,22 @@ class TestMethods(BaseTest):
         json = bv.setJson()
         self.assertIsNotNone(json)
 
+    def test_getSite(self):
+        portal = self.layer['portal']
+        login(portal, TEST_USER_NAME)
+
+        bv = self.buttonViewlet
+        site = bv.getSite()
+        self.assertEqual(site, 'http://nohost/plone')
+
+    def test_getPreferencesUrl(self):
+        portal = self.layer['portal']
+        login(portal, TEST_USER_NAME)
+
+        bv = self.buttonViewlet
+        url = bv.getPreferencesUrl()
+        self.assertEqual(url, 'http://nohost/plone/@@personal-preferences')
+
     def test_viewletPresent(self):
         portal = self.layer['portal']
         login(portal, TEST_USER_NAME)

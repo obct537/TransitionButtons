@@ -20,6 +20,7 @@
         var state = settings.wfState;
         var pageElement = settings.pageElement;
         var fixed = settings.floating;
+        var preferencesUrl = settings.preferencesUrl;
 
         // This is needed since some URL's end in a slash,
         // and some don't
@@ -82,9 +83,14 @@
         var html ="<div id='transitionButtons'>";
 
         html = html + 
+        '<span id="prefs_link">x</span>' + 
+        '<div title="Hide transition buttons" id="prefsDialog"></div>' +
         '<h4>This page\'s workflow state is: <span class="stateTitle" >' + state +'</span></h4>' +
         '<p class="tbText">' + stateDescription + '</p>' + 
         '<div class="button-row"></div></div>';
+
+        var message = "If you no longer want to see this widget,";
+        message += " disable the \"Transition buttons widget\" option in personal preferences."
 
         $(html).insertBefore(pageElement);
 
@@ -108,6 +114,28 @@
         {
             $('#transitionButtons').addClass('floating');
         }
+
+        $('#prefsDialog').text(message);
+
+        $('#prefsDialog').dialog({
+            resizeable: true,
+            autoOpen: false,
+            modal: true,
+            width: 500,
+            height: 200,
+            buttons: {
+                "Go to personal preferences": function() {
+                    window.location.href = preferencesUrl;
+                },
+                "Cancel": function() {
+                    $(this).dialog("close");
+                }
+            }
+        });
+
+        $('#prefs_link').on('click', function() {
+            $('#prefsDialog').dialog("open");
+        });
     
     });
 })(jQuery);

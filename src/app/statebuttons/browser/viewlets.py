@@ -81,6 +81,15 @@ class ButtonViewlet(ViewletBase):
         else:
             return False
 
+    def getSite(self):
+        return self.context.portal_url()
+
+    def getPreferencesUrl(self):
+        base = self.getSite()
+        base += '/@@personal-preferences'
+
+        return base
+
     def setJson(self):
 
         panelSettings = self.getSettings()
@@ -92,6 +101,7 @@ class ButtonViewlet(ViewletBase):
         settings["stateDescription"] = self.getStateDescription()
         settings["pageElement"] = panelSettings.pageElement
         settings["floating"] = panelSettings.floating
+        settings["preferencesUrl"] = self.getPreferencesUrl()
 
         return json.dumps(settings, sort_keys=False)
 
