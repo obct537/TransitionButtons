@@ -13,7 +13,18 @@ class IButtonSettings(Interface):
        Plone registry
     """
 
+    floating = schema.Bool(title=u'Floating button box.',
+                                description=u'Enable this option to make the transition button box float statically above the page',
+                                required=False,
+                                default=True)
+
     pageElement = schema.TextLine(title=u'Site element.', 
-                                  default=u'#portal-breadcrumbs',
-                                  description=u'Enter a CSS selector to attach the button box to.',
-                                  required=False,)
+                                default=u'#portal-breadcrumbs',
+                                description=u'Enter a CSS selector to attach the button box to. If floating is enabled, this \
+                                option does nothing.',
+                                required=False,)
+
+class IButtonConfigLayer(Interface):
+    """ Use all the fields from the default user data schema, and add various
+    extra fields.
+    """

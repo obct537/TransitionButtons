@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '0.8.5'
+version = '0.9.5'
 
 long_description = (
     open('README.txt').read()
@@ -40,6 +40,7 @@ setup(name='app.statebuttons',
       zip_safe=False,
       install_requires=[
           'setuptools',
+          'collective.js.jqueryui>=1.10.1.2',
           # -*- Extra requirements: -*-
       ],
       extras_require={'test': ['plone.app.testing']},

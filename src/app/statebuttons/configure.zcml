@@ -16,6 +16,14 @@
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
 
+  <genericsetup:registerProfile
+    name="uninstall"
+    title="app.statebuttons uninstall"
+    directory="profiles/uninstall"
+    description="Uninstalls the app.statebuttons package"
+    provides="Products.GenericSetup.interfaces.EXTENSION"
+    />
+
   <include package=".browser" />
 
   <browser:page
@@ -25,8 +33,16 @@
       permission="cmf.ManagePortal"
       />
 
+  <browser:page
+      for="plone.app.layout.navigation.interfaces.INavigationRoot"
+      name="personal-preferences"
+      class=".personalpreferences.CustomPersonalPreferencesPanel"
+      permission="cmf.SetOwnProperties"
+      layer=".interfaces.IButtonConfigLayer"
+      />
+
   <browser:resource
-    name="app.statebuttons-buttons.js"
+    name="transitionbuttons.js"
     file="browser/resources/buttons.js"
     />
 

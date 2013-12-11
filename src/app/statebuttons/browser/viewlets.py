@@ -3,6 +3,8 @@ from plone.app.layout.viewlets.common import ViewletBase
 from Products.CMFCore.utils import getToolByName
 from app.statebuttons.interfaces import IButtonSettings
 
+from AccessControl.PermissionRole import rolesForPermissionOn
+
 from zope.component import queryUtility
 from plone.registry.interfaces import IRegistry
 from string import split
@@ -12,12 +14,18 @@ class ButtonViewlet(ViewletBase):
     render = ViewPageTemplateFile('js_viewlet.pt')
     settings = []
 
-    def isPanelEnabled(self):
+    def isPanelDisabled(self):
 
         memTool = getToolByName(self, 'portal_membership')
         user = memTool.getAuthenticatedMember()
+        res = user.getProperty('buttonsDisabled')
 
-        return user.getProperty('buttonsEnabled')
+        if( res == False or res == True ):
+            return res
+        else:
+            #If the setting isn't set yet, it returns an object instead of true/false
+            return False
+
 
     # gets the settings from the add-on control panel
     def getSettings(self):
@@ -49,6 +57,8 @@ class ButtonViewlet(ViewletBase):
 
         try:
             # defaultWorkflow is a tuple, so we need to take the index of it
+            # 
+            # TODO: fix for sites with multiple simultaneous workflows?
             desc = wf_tool[ defaultWorkflow[0] ].states[state].description
         except:
             return False
@@ -67,23 +77,40 @@ class ButtonViewlet(ViewletBase):
             for transition in transitions:
                 transitionList.append(transition)
 
-            return json.dumps(transitionList, sort_keys=False)
+            return transitionList
         else:
             return False
-        
+
+    def getSite(self):
+        return self.context.portal_url()
+
+    def getPreferencesUrl(self):
+        base = self.getSite()
+        base += '/@@personal-preferences'
+
+        return base
+
+    def setJson(self):
+
+        panelSettings = self.getSettings()
+
+        settings = {}
+        settings["isPanelDisabled"] = self.isPanelDisabled()
+        settings["allowedTransitions"] = self.getTransitions()
+        settings["wfState"] = self.getWFState() 
+        settings["stateDescription"] = self.getStateDescription()
+        settings["pageElement"] = panelSettings.pageElement
+        settings["floating"] = panelSettings.floating
+        settings["preferencesUrl"] = self.getPreferencesUrl()
+
+        return json.dumps(settings, sort_keys=False)
+
     def update(self):
 
         # if the user has disabled the panel, don't
         # bother with the rest of this stuff
-        if( not self.isPanelEnabled() ):
+        if( self.isPanelDisabled() ):
             return 0
 
-        settings = self.getSettings()
-
-        self.isEnabled = self.isPanelEnabled()
-        self.validTransitions = self.getTransitions
-        self.wfState = self.getWFState
-        self.pageElement = settings.pageElement
-        self.workflowDescription = self.getStateDescription
-
+        self.buttonJson = self.setJson()
 

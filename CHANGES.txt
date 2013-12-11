@@ -1,15 +1,29 @@
 Changelog
 =========
 
-.30
+.9.5
 =========
-Actually started logging changes.
+Created "close" button to allow users to quickly remove the button box
+if they want to. 
+Added further tests.
 
-.8
+.9
 =========
-Version number change to more accurately reflect progress
+Created setting to make the button box "float" on the page.
+Setup unit testing, added tests.
+Moved the user preference option to the actual preferences page.
 
 .8.5
 =========
 Added the ability to opt out of the button panel in user preferences.
 Added code to prevent button panel from appearing to un-authenticated users.
+
+.8
+=========
+Arbitrary version number change to more accurately reflect progress
+
+.30
+=========
+Actually started logging changes.
+
+

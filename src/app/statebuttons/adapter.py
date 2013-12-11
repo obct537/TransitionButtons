@@ -1,10 +1,14 @@
-from plone.app.users.browser.personalpreferences import UserDataPanelAdapter
+from plone.app.users.browser.personalpreferences import PersonalPreferencesPanelAdapter
+from app.statebuttons.userdataschema import IEnhancedUserDataSchema
+from zope.interface import implements
 
-class EnhancedUserDataPanelAdapter(UserDataPanelAdapter):
+class EnhancedUserDataPanelAdapter(PersonalPreferencesPanelAdapter):
     """
     """
-    def get_buttonEnabled(self):
-        return self.context.getProperty('buttonsEnabled', '')
-    def set_buttonsEnabled(self, value):
-        return self.context.setMemberProperties({'buttonsEnabled': value})
-    buttonsEnabled = property(get_buttonEnabled, set_buttonsEnabled)
+    implements(IEnhancedUserDataSchema)
+
+    def get_buttonDisabled(self):
+        return self.context.getProperty('buttonsDisabled', '')
+    def set_buttonsDisabled(self, value):
+        return self.context.setMemberProperties({'buttonsDisabled': value})
+    buttonsDisabled = property(get_buttonDisabled, set_buttonsDisabled)
