@@ -39,7 +39,7 @@ class TestMethods(BaseTest):
         login(portal, TEST_USER_NAME)
 
         bv = self.buttonViewlet
-        isEnabled = bv.isPanelEnabled()
+        isDisabled = bv.isPanelDisabled()
         self.assertFalse(isDisabled)
 
     def test_getWFStateself(self):

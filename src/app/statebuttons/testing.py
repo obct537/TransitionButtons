@@ -27,11 +27,14 @@ class StatebuttonsFixture(PloneSandboxLayer):
 
     def setUpZope(self, app, configurationContext):
         import app.statebuttons
+        import collective.js.jqueryui
         xmlconfig.file('configure.zcml',
             app.statebuttons, context=configurationContext)
+        self.loadZCML(package=collective.js.jqueryui)
         self.loadZCML(package=app.statebuttons)
 
     def setUpPloneSite(self, portal):
+        applyProfile(portal, 'collective.js.jqueryui:default')
         applyProfile(portal, 'app.statebuttons:default')
         setRoles(portal, TEST_USER_ID, ['Manager'])
         import transaction
