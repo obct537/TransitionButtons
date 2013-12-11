@@ -7,8 +7,8 @@ class EnhancedUserDataPanelAdapter(PersonalPreferencesPanelAdapter):
     """
     implements(IEnhancedUserDataSchema)
 
-    def get_buttonEnabled(self):
-        return self.context.getProperty('buttonsEnabled', '')
-    def set_buttonsEnabled(self, value):
-        return self.context.setMemberProperties({'buttonsEnabled': value})
-    buttonsEnabled = property(get_buttonEnabled, set_buttonsEnabled)
+    def get_buttonDisabled(self):
+        return self.context.getProperty('buttonsDisabled', '')
+    def set_buttonsDisabled(self, value):
+        return self.context.setMemberProperties({'buttonsDisabled': value})
+    buttonsDisabled = property(get_buttonDisabled, set_buttonsDisabled)

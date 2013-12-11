@@ -40,7 +40,7 @@ class TestMethods(BaseTest):
 
         bv = self.buttonViewlet
         isEnabled = bv.isPanelEnabled()
-        self.assertTrue(isEnabled)
+        self.assertFalse(isDisabled)
 
     def test_getWFStateself(self):
         portal = self.layer['portal']

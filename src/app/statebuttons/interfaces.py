@@ -16,7 +16,7 @@ class IButtonSettings(Interface):
     floating = schema.Bool(title=u'Floating button box.',
                                 description=u'Enable this option to make the transition button box float statically above the page',
                                 required=False,
-                                default=False)
+                                default=True)
 
     pageElement = schema.TextLine(title=u'Site element.', 
                                 default=u'#portal-breadcrumbs',

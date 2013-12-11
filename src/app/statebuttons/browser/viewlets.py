@@ -14,11 +14,11 @@ class ButtonViewlet(ViewletBase):
     render = ViewPageTemplateFile('js_viewlet.pt')
     settings = []
 
-    def isPanelEnabled(self):
+    def isPanelDisabled(self):
 
         memTool = getToolByName(self, 'portal_membership')
         user = memTool.getAuthenticatedMember()
-        res = user.getProperty('buttonsEnabled')
+        res = user.getProperty('buttonsDisabled')
 
         if( res == False or res == True ):
             return res
@@ -95,7 +95,7 @@ class ButtonViewlet(ViewletBase):
         panelSettings = self.getSettings()
 
         settings = {}
-        settings["isPanelEnabled"] = self.isPanelEnabled()
+        settings["isPanelDisabled"] = self.isPanelDisabled()
         settings["allowedTransitions"] = self.getTransitions()
         settings["wfState"] = self.getWFState() 
         settings["stateDescription"] = self.getStateDescription()
@@ -109,7 +109,7 @@ class ButtonViewlet(ViewletBase):
 
         # if the user has disabled the panel, don't
         # bother with the rest of this stuff
-        if( not self.isPanelEnabled() ):
+        if( self.isPanelDisabled() ):
             return 0
 
         self.buttonJson = self.setJson()
