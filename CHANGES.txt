@@ -6,6 +6,7 @@ Changelog
 Created "close" button to allow users to quickly remove the button box
 if they want to. 
 Added further tests.
+Refactored prefernces checkbox
 
 .9
 =========
