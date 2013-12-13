@@ -3,7 +3,7 @@
   <utilities>
     <utility
       interface="plone.app.users.browser.personalpreferences.IPersonalPreferences"
-      factory="app.statebuttons.userdataschema.UserDataSchemaProvider"
+      factory="uwosh.transitionbuttons.userdataschema.UserDataSchemaProvider"
     />
   </utilities>
 </componentregistry>

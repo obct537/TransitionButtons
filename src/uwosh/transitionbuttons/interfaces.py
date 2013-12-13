@@ -5,7 +5,7 @@ from zope.interface import Interface
 
 from zope.i18nmessageid import MessageFactory
 
-_ = MessageFactory('app.statebuttons')
+_ = MessageFactory('uwosh.transitionbuttons')
 
 
 class IButtonSettings(Interface):

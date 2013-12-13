@@ -8,7 +8,7 @@ from Products.CMFCore.utils import getToolByName
 from plone.testing.z2 import Browser
 from Products.Five.browser import BrowserView as View
 from zope.viewlet.interfaces import IViewletManager
-from app.statebuttons.browser.viewlets import ButtonViewlet
+from uwosh.transitionbuttons.browser.viewlets import ButtonViewlet
 from zope.component import queryMultiAdapter
 
 from plone.testing import z2
@@ -26,16 +26,16 @@ class StatebuttonsFixture(PloneSandboxLayer):
     defaultBases = (PLONE_FIXTURE,)
 
     def setUpZope(self, app, configurationContext):
-        import app.statebuttons
+        import uwosh.transitionbuttons
         import collective.js.jqueryui
         xmlconfig.file('configure.zcml',
-            app.statebuttons, context=configurationContext)
+            uwosh.transitionbuttons, context=configurationContext)
         self.loadZCML(package=collective.js.jqueryui)
-        self.loadZCML(package=app.statebuttons)
+        self.loadZCML(package=uwosh.transitionbuttons)
 
     def setUpPloneSite(self, portal):
         applyProfile(portal, 'collective.js.jqueryui:default')
-        applyProfile(portal, 'app.statebuttons:default')
+        applyProfile(portal, 'uwosh.transitionbuttons:default')
         setRoles(portal, TEST_USER_ID, ['Manager'])
         import transaction
         transaction.commit()
@@ -43,14 +43,14 @@ class StatebuttonsFixture(PloneSandboxLayer):
 
 
 STATEBUTTONS_FIXTURE = StatebuttonsFixture()
-APP_STATEBUTTONS_FUNCTIONAL_TESTING = FunctionalTesting(
+UWOSH_TRANSITIONBUTTONS_FUNCTIONAL_TESTING = FunctionalTesting(
                         bases=(STATEBUTTONS_FIXTURE,),
-                        name="AppstatebuttonsLayer:Functional"
+                        name="UwoshTransitionbuttonsLayer:Functional"
 )
 
-APP_STATEBUTTONS_INTEGRATION_TESTING = IntegrationTesting(
+UWOSH_TRANSITIONBUTTONS_INTEGRATION_TESTING = IntegrationTesting(
     bases=(STATEBUTTONS_FIXTURE,),
-    name="AppstatebuttonsLayer:Integration"
+    name="UwoshTransitionbuttonsLayer:Integration"
 )
 
 class BaseTest(unittest.TestCase):

@@ -1,28 +1,28 @@
 import unittest2 as unittest
 from plone.app.testing import setRoles, login, TEST_USER_NAME
 
-from app.statebuttons.testing import BaseTest
+from uwosh.transitionbuttons.testing import BaseTest
 
 from Products.CMFCore.utils import getToolByName
 from zope.component import queryMultiAdapter
 from zope.viewlet.interfaces import IViewletManager
 from Products.Five.browser import BrowserView as View
 
-from app.statebuttons.browser.viewlets import ButtonViewlet
+from uwosh.transitionbuttons.browser.viewlets import ButtonViewlet
 import Products.DCWorkflow as wftool
 
-from app.statebuttons.testing import \
-    APP_STATEBUTTONS_FUNCTIONAL_TESTING
+from uwosh.transitionbuttons.testing import \
+    UWOSH_TRANSITIONBUTTONS_FUNCTIONAL_TESTING
 
 
 class TestMethods(BaseTest):
 
-    layer = APP_STATEBUTTONS_FUNCTIONAL_TESTING
+    layer = UWOSH_TRANSITIONBUTTONS_FUNCTIONAL_TESTING
 
     def test_installed(self):
     	portal = self.layer['portal']
     	installer = getToolByName(portal, 'portal_quickinstaller')
-    	self.assertTrue(installer.isProductInstalled('app.statebuttons'))
+    	self.assertTrue(installer.isProductInstalled('uwosh.transitionbuttons'))
 
     def test_js(self):
     	portal = self.layer['portal']

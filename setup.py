@@ -14,7 +14,7 @@ long_description = (
     open('CHANGES.txt').read()
     + '\n')
 
-setup(name='app.statebuttons',
+setup(name='uwosh.transitionbuttons',
       version=version,
       description="Adds a button interface for the different state ttransitions",
       long_description=long_description,
@@ -35,7 +35,7 @@ setup(name='app.statebuttons',
       license='gpl',
       packages=find_packages('src'),
       package_dir={'': 'src'},
-      namespace_packages=['app', ],
+      namespace_packages=['uwosh', ],
       include_package_data=True,
       zip_safe=False,
       install_requires=[
