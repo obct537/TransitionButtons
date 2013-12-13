@@ -1,6 +1,6 @@
 from plone.app.registry.browser import controlpanel
 
-from app.statebuttons.interfaces import IButtonSettings, _
+from uwosh.transitionbuttons.interfaces import IButtonSettings, _
 
 
 class ButtonSettingsEditForm(controlpanel.RegistryEditForm):

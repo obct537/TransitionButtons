@@ -2,6 +2,6 @@
 <!-- Register the package-specific browser layer, so that it will be activated
 when this product is installed. -->
 <layers>
-    <layer name="app.statebuttons" 
-           interface="app.statebuttons.interfaces.IButtonConfigLayer" />
+    <layer name="uwosh.transitionbuttons" 
+           interface="uwosh.transitionbuttons.interfaces.IButtonConfigLayer" />
 </layers>

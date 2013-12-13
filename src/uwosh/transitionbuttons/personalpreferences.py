@@ -2,7 +2,7 @@ from plone.app.users.browser.personalpreferences import PersonalPreferencesPanel
 from plone.app.users.browser.personalpreferences import LanguageWidget
 from plone.app.users.browser.personalpreferences import WysiwygEditorWidget
 from zope.formlib import form
-from app.statebuttons.userdataschema import IEnhancedUserDataSchema
+from uwosh.transitionbuttons.userdataschema import IEnhancedUserDataSchema
 
 class CustomPersonalPreferencesPanel(PersonalPreferencesPanel):
 
