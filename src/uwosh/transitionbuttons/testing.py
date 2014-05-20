@@ -66,7 +66,7 @@ class BaseTest(unittest.TestCase):
 
         memTool = getToolByName(portal, 'portal_membership')
         self.member = memTool.getMemberById(TEST_USER_ID)
-        self.member.setMemberProperties(mapping={'buttonsEnabled': True})
+        self.member.setMemberProperties(mapping={'buttonsDisabled': False})
 
 
         portal.invokeFactory('Folder', 'f1', title=u"Folder 1")
