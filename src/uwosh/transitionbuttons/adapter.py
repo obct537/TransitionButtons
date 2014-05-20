@@ -1,6 +1,7 @@
 from plone.app.users.browser.personalpreferences import PersonalPreferencesPanelAdapter
 from uwosh.transitionbuttons.userdataschema import IEnhancedUserDataSchema
 from zope.interface import implements
+from uwosh.transitionbuttons.interfaces import IButtonConfigLayer
 
 class EnhancedUserDataPanelAdapter(PersonalPreferencesPanelAdapter):
     """

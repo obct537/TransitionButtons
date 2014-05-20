@@ -54,4 +54,23 @@ class TestControlPanel(BaseTest):
 
         self.assertTrue(settings.floating == True)
 
+    def test_typesDisabled(self):
+        portal = self.layer['portal']
+        browser = self.browser
+        self.getControlPanel()
+        browser.getControl('Page').selected = True
+        browser.getControl('Save').click()
+
+        bv = self.buttonViewlet
+        settings = bv.getSettings()
+        disabled = settings.disabledTypes
+
+        page = False
+        import pdb; pdb.set_trace()
+        for val in disabled:
+            if val == "Page":
+                True
+
+        self.assertTrue(page)
+
 

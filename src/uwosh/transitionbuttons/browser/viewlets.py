@@ -112,5 +112,13 @@ class ButtonViewlet(ViewletBase):
         if( self.isPanelDisabled() ):
             return 0
 
+        # If the current content type is disabled, stop here
+        settings = self.getSettings()
+        types = settings.disabledTypes
+        if types:
+            for type in types:
+                if self.context.portal_type == type:
+                    return 0
+
         self.buttonJson = self.setJson()
 
