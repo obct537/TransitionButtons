@@ -54,6 +54,10 @@
 	padding: 2px;
 }
 
+#transitionButtons .tbText {
+	margin-top: 5px;
+}
+
 #transitionButtons.floating {
 	position: fixed;
 	right: 5px;

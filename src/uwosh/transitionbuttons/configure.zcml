@@ -16,6 +16,14 @@
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
 
+  <genericsetup:registerProfile
+      name="uninstall"
+      title="State buttons"
+      directory="profiles/uninstall"
+      description="Remove uwosh.transitionbuttons."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+
   <include package=".browser" />
 
   <browser:page

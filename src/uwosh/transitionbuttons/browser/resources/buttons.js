@@ -74,7 +74,7 @@
         {
             buttons.push(editUrl);
         }
-        if( buttons.length <= 1 )
+        if( buttons.length < 1 )
         {
 
             return 0;
@@ -85,7 +85,7 @@
         html = html + 
         '<span id="prefs_link">x</span>' + 
         '<div title="Hide transition buttons" id="prefsDialog"></div>' +
-        '<h4>This page\'s workflow state is: <span class="stateTitle" >' + state +'</span></h4>' +
+        '<h4>Workflow state: <span class="stateTitle" >' + state +'</span></h4>' +
         '<p class="tbText">' + stateDescription + '</p>' + 
         '<div class="button-row"></div></div>';
 

@@ -20,12 +20,15 @@ class ButtonViewlet(ViewletBase):
         user = memTool.getAuthenticatedMember()
         res = user.getProperty('buttonsDisabled')
 
-        if( res == False or res == True ):
-            return res
-        else:
-            #If the setting isn't set yet, it returns an object instead of true/false
-            return False
+        # If the current content type isn't enabled, stop here
+        settings = self.getSettings()
+        types = settings.EnabledTypes
+        if types:
+            if self.context.portal_type not in types:
+                return False
 
+        if( res == False or res == True ):
+            return not res
 
     # gets the settings from the add-on control panel
     def getSettings(self):
@@ -106,19 +109,6 @@ class ButtonViewlet(ViewletBase):
         return json.dumps(settings, sort_keys=False)
 
     def update(self):
-
-        # if the user has disabled the panel, don't
-        # bother with the rest of this stuff
-        if( self.isPanelDisabled() ):
-            return 0
-
-        # If the current content type is disabled, stop here
-        settings = self.getSettings()
-        types = settings.disabledTypes
-        if types:
-            for type in types:
-                if self.context.portal_type == type:
-                    return 0
 
         self.buttonJson = self.setJson()
 
