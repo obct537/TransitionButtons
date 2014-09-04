@@ -8,6 +8,13 @@
             return 0;
         }
 
+        var url = document.URL;
+
+        // We really don't need to ever use this on the edit page.
+        if (url.indexOf('/edit') > 0) {
+            return 0;
+        }
+
         var json = $('#buttonJson').text();
         var settings = jQuery.parseJSON( json );
 
@@ -74,23 +81,22 @@
         {
             buttons.push(editUrl);
         }
+
         if( buttons.length < 1 )
         {
-
             return 0;
         }
 
         var html ="<div id='transitionButtons'>";
 
         html = html + 
-        '<span id="prefs_link">x</span>' + 
-        '<div title="Hide transition buttons" id="prefsDialog"></div>' +
+        '<span id="prefs_link" rel="#prefsDialog">x</span>' + 
         '<h4>Workflow state: <span class="stateTitle" >' + state +'</span></h4>' +
         '<p class="tbText">' + stateDescription + '</p>' + 
         '<div class="button-row"></div></div>';
 
         var message = "If you no longer want to see this widget,";
-        message += " disable the \"Transition buttons widget\" option in personal preferences."
+        message += " check the \"Disable transition buttons widget\" option in personal preferences."
 
         $(html).insertBefore(pageElement);
 
@@ -115,26 +121,12 @@
             $('#transitionButtons').addClass('floating');
         }
 
-        $('#prefsDialog').text(message);
+        $('#prefsDialog').prepend(message);
 
-        $('#prefsDialog').dialog({
-            resizeable: true,
-            autoOpen: false,
-            modal: true,
-            width: 500,
-            height: 200,
-            buttons: {
-                "Go to personal preferences": function() {
-                    window.location.href = preferencesUrl;
-                },
-                "Cancel": function() {
-                    $(this).dialog("close");
-                }
-            }
-        });
 
-        $('#prefs_link').on('click', function() {
-            $('#prefsDialog').dialog("open");
+
+        $('#prefs_link').overlay({
+                top: 250,
         });
     
     });

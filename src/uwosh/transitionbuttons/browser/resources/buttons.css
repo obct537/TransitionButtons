@@ -26,6 +26,15 @@
 	padding: 0;
 }
 
+#prefsDialog {
+	display: none;
+	padding: 25px;
+	border: 2px solid black;
+	border-radius: 5px;
+	background-color: white;
+	width: 300px;
+}
+
 #transitionButtons .button:hover {
 	background: #ddd;
 }

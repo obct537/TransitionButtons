@@ -6,7 +6,7 @@ from uwosh.transitionbuttons.interfaces import IButtonSettings, _
 class ButtonSettingsEditForm(controlpanel.RegistryEditForm):
 
     schema = IButtonSettings
-    label = _(u"Button settings")
+    label = _(u"Transition Buttons")
     description = _(u"""""")
 
     def updateFields(self):

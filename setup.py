@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '0.9.6a'
+version = '0.9.7a'
 
 long_description = (
     open('README.txt').read()
@@ -40,7 +40,6 @@ setup(name='uwosh.transitionbuttons',
       zip_safe=False,
       install_requires=[
           'setuptools',
-          'collective.js.jqueryui>=1.10.1.2',
           # -*- Extra requirements: -*-
       ],
       extras_require={'test': ['plone.app.testing']},
