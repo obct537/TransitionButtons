@@ -1,5 +1,9 @@
 Changelog
 =========
+0.9.71 (9/4/2014)
+=================
+- Removed leftover jqueryui dependency
+
 0.9.7a (9/4/2014)
 =================
 - Removed dependency on jqueryui
