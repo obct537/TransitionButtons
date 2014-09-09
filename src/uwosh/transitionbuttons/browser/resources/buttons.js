@@ -28,6 +28,42 @@
         var pageElement = settings.pageElement;
         var fixed = settings.floating;
         var preferencesUrl = settings.preferencesUrl;
+        var location = settings.floatLocation;
+
+        function setLocation() {
+            var top = "auto";
+            var right = "auto";
+            var bottom = "auto";
+            var left = "auto";
+            var space = "10px";
+
+
+            if( location == "upperLeft" )
+            {
+                top = space;
+                left = space;
+            }
+            else if( location == "upperRight")
+            {
+                top = space;
+                right = space;
+            }
+            else if ( location == "bottomRight" )
+            {
+                bottom = space;
+                right = space;
+            }
+            else if( location == "bottomLeft" )
+            {
+                left = space;
+                bottom = space;
+            }
+
+            if( location !== null )
+            {
+                $('#transitionButtons').css('right', right).css('left', left).css('top', top).css('bottom', bottom);
+            }
+        }
 
         // This is needed since some URL's end in a slash,
         // and some don't
@@ -128,6 +164,8 @@
         $('#prefs_link').overlay({
                 top: 250,
         });
+
+        setLocation();
     
     });
 })(jQuery);

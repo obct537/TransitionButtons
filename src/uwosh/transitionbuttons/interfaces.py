@@ -3,11 +3,21 @@ from z3c.form import interfaces
 from zope import schema
 from zope.interface import Interface
 from Products.CMFCore.utils import getToolByName
+from zope.schema.vocabulary import SimpleVocabulary, SimpleTerm
 
 from zope.i18nmessageid import MessageFactory
 
 _ = MessageFactory('uwosh.transitionbuttons')
 
+items = [ 
+            (u"Upper Left", "upperLeft"),
+            (u"Upper Right", "upperRight"),
+            (u"Bottom Left", "bottomLeft"),
+            (u"Bottom Right", "bottomRight")]
+
+terms = [ SimpleTerm(value=pair[1], token=pair[1], title=pair[0]) for pair in items ]
+
+locationVocabulary = SimpleVocabulary(terms)
 
 class IButtonSettings(Interface):
     """Global settings for the transition button panel. Settings stored in the 
@@ -23,6 +33,12 @@ class IButtonSettings(Interface):
                                 description=u'Enter a CSS selector to attach the button box to. If floating is enabled, this \
                                 option does nothing.',
                                 required=False,)
+
+    floatLocation = schema.Choice(vocabulary=locationVocabulary,
+                                title=u'Floating Location',
+                                description=u'The location on screen where the transition button box will float. If floating is \
+                                disabled, this option does nothing.',
+                                required=False)
 
     EnabledTypes = schema.List(title=_(u"Enable content types."),
                                 description=u'The content types that the transition button box should appear on.',

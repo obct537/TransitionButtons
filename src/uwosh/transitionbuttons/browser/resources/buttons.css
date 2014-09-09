@@ -1,7 +1,7 @@
 #transitionButtons {
 	border: 1px solid black;
-	width: 400px;
 	padding: 10px;
+	max-width: 450px;
 	margin-bottom: 5px;
 	text-decoration: none;
 	font-weight: normal;

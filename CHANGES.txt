@@ -1,5 +1,10 @@
 Changelog
 =========
+0.9.73 (9/8/2014)
+=================
+- Button box now changes to fit the size of it's contents.
+- Added dropdown to select which corner the box will float in. 
+
 0.9.71 (9/4/2014)
 =================
 - Removed leftover jqueryui dependency

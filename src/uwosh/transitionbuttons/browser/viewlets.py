@@ -105,6 +105,7 @@ class ButtonViewlet(ViewletBase):
         settings["pageElement"] = panelSettings.pageElement
         settings["floating"] = panelSettings.floating
         settings["preferencesUrl"] = self.getPreferencesUrl()
+        settings["floatLocation"] = panelSettings.floatLocation
 
         return json.dumps(settings, sort_keys=False)
 
