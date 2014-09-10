@@ -40,6 +40,11 @@ class IButtonSettings(Interface):
                                 disabled, this option does nothing.',
                                 required=False)
 
+    floatSpacing = schema.TextLine(title=u'Floating Spacing',
+                                description=u'The value (in pixels) of spacing between the button box, and the edge of the screen',
+                                default=u"10",
+                                required=False)
+
     EnabledTypes = schema.List(title=_(u"Enable content types."),
                                 description=u'The content types that the transition button box should appear on.',
                                 value_type=schema.Choice(source=u"plone.app.vocabularies.UserFriendlyTypes"),

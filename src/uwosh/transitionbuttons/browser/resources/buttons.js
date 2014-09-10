@@ -29,13 +29,13 @@
         var fixed = settings.floating;
         var preferencesUrl = settings.preferencesUrl;
         var location = settings.floatLocation;
+        var space = settings.floatSpacing + "px";
 
         function setLocation() {
             var top = "auto";
             var right = "auto";
             var bottom = "auto";
             var left = "auto";
-            var space = "10px";
 
 
             if( location == "upperLeft" )
@@ -43,7 +43,7 @@
                 top = space;
                 left = space;
             }
-            else if( location == "upperRight")
+            else if( location == "upperRight" )
             {
                 top = space;
                 right = space;

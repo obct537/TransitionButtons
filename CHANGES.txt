@@ -1,5 +1,9 @@
 Changelog
 =========
+0.9.74 (9/10/2014)
+==================
+- Added field to specify spacing around button box
+
 0.9.73 (9/8/2014)
 =================
 - Button box now changes to fit the size of it's contents.
