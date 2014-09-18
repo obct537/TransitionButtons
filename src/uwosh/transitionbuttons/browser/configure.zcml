@@ -11,6 +11,7 @@
 	    name="uwosh.transitionbuttons"
 	    manager="plone.app.layout.viewlets.interfaces.IPortalFooter"
 	    class=".viewlets.ButtonViewlet"
+        layer="uwosh.transitionbuttons.interfaces.IButtonConfigLayer"
 	    permission="zope2.View"
 	    />
 </configure>
