@@ -1,5 +1,10 @@
 Changelog
 =========
+0.9.75 (9/18/2014)
+==================
+- Viewlet now longer appears when the product is not installed.
+- Remove the 'No Value' option for the location drop box
+
 0.9.74 (9/10/2014)
 ==================
 - Added field to specify spacing around button box
