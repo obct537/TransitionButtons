@@ -42,7 +42,7 @@ class IButtonSettings(Interface):
                                 description=u'The location on screen where the transition button box will float. If floating is \
                                 disabled, this option does nothing.',
                                 default="bottomRight",
-                                required=False)
+                                required=True)
 
     floatSpacing = schema.TextLine(title=u'Floating Spacing',
                                 description=u'The value (in pixels) of spacing between the button box, and the edge of the screen',
