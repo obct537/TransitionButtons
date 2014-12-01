@@ -1,5 +1,12 @@
 Changelog
 =========
+0.9.8 (12/1/2014)
+=================
+- Added feature to allow the user to hide the viewlet easily
+- Updated tests 
+- Fixed naming ambiguity with the "panelDisabled" feature
+- Fixed issues when dealing with non-standard workflows
+
 0.9.75 (9/18/2014)
 ==================
 - Viewlet now longer appears when the product is not installed.

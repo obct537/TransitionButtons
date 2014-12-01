@@ -77,6 +77,73 @@
             }
         }
 
+        function minimize() {
+            var right = true;
+
+            if( $(transitionButtons).css('left') !== "auto" )
+            {
+                right = false;
+            }
+
+        }
+
+        function removeCookie() {
+            document.cookie = 'buttonsHidden=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+        }
+
+        function checkIfHidden() {
+            var hidden = getCookie('buttonsHidden');
+
+            if( hidden == 'true' )
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        function hideButtons() {
+            var side = location.indexOf('Right');
+
+            if( side > 0 ) {
+                side = 'right';
+            }
+            else {
+                side = 'left';
+            }
+
+            $('#hideButtons').text('Show');
+            $('#transitionButtons').css('right','').css('left','');
+            $('#transitionButtons').children().hide();
+
+            $('#hideButtons').show();
+
+            $('#transitionButtons').addClass('hidden').addClass(side);
+        }
+
+        function showButtons() {
+            $('#hideButtons').text('Hide');
+            $('#transitionButtons').children().show();
+            $('#transitionButtons').removeClass('hidden').removeClass('left').removeClass('right');
+
+            removeCookie();
+            setLocation();
+        }
+        //Borrowed from http://www.w3schools.com/js/js_cookies.asp.
+        //Thanks W3C!
+        function getCookie(cname) {
+            var name = cname + "=";
+            var ca = document.cookie.split(';');
+            for(var i=0; i<ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0)==' ') c = c.substring(1);
+                if (c.indexOf(name) != -1) return c.substring(name.length,c.length);
+            }
+            return "";
+        }
+
         var base = stripSlash($("base").attr("href"));
 
         // Since this is referring to links generated internally, and not by a theme,
@@ -127,6 +194,7 @@
 
         html = html + 
         '<span id="prefs_link" rel="#prefsDialog">x</span>' + 
+        '<span id="hideButtons">Hide</span>' +
         '<h4>Workflow state: <span class="stateTitle" >' + state +'</span></h4>' +
         '<p class="tbText">' + stateDescription + '</p>' + 
         '<div class="button-row"></div></div>';
@@ -149,7 +217,15 @@
 
         var currentState = $('.state-' + state.toLowerCase() );
         stateColor = currentState.css('background-color');
-        $('.stateTitle').css('background-color', stateColor);
+        
+        if( stateColor != "rgba(0, 0, 0, 0)")
+        {
+            $('.stateTitle').css('background-color', stateColor);
+        }
+        else
+        {
+            $('.stateTitle').css('background-color', '#444');
+        }
 
         // add class to make the box "float"
         if( fixed )
@@ -159,13 +235,27 @@
 
         $('#prefsDialog').prepend(message);
 
+        $('#hideButtons').click(function() {
+            if( $('#transitionButtons').hasClass('hidden') ) {
+                showButtons();
+            }
+            else {
+                 hideButtons();
+                document.cookie="buttonsHidden=true;";   
+            }
 
+        });
 
         $('#prefs_link').overlay({
                 top: 250,
         });
 
         setLocation();
+
+        if( checkIfHidden() )
+        {
+            hideButtons();   
+        }
     
     });
 })(jQuery);
