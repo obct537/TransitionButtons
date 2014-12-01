@@ -22,6 +22,34 @@
 	color: white;
 }
 
+#transitionButtons.hidden {
+	opacity: .4;
+	width: 35px;
+}
+
+#transitionButtons.hidden:hover {
+	opacity: 1;
+}
+
+#hideButtons {
+	color: #666;
+	cursor: pointer;
+}
+
+#transitionButtons.left {
+	left: 0px;
+	border-left: none;
+	border-bottom-right-radius: 5px;
+	border-top-right-radius: 5px;
+}
+
+#transitionButtons.right {
+	right: 0px;
+	border-right: none;
+	border-bottom-left-radius: 5px;
+	border-top-left-radius: 5px;
+}
+
 .button-row {
 	padding: 0;
 }

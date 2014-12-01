@@ -50,7 +50,8 @@ class IButtonSettings(Interface):
                                 required=False)
 
     EnabledTypes = schema.List(title=_(u"Enable content types."),
-                                description=u'The content types that the transition button box should appear on.',
+                                description=u'The content types that the transition button box should appear on. If no \
+                                values are added, it is assumed that all content types are allowed.',
                                 value_type=schema.Choice(source=u"plone.app.vocabularies.UserFriendlyTypes"),
                                 required=False,)
 

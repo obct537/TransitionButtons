@@ -27,14 +27,11 @@ class StatebuttonsFixture(PloneSandboxLayer):
 
     def setUpZope(self, app, configurationContext):
         import uwosh.transitionbuttons
-        import collective.js.jqueryui
         xmlconfig.file('configure.zcml',
             uwosh.transitionbuttons, context=configurationContext)
-        self.loadZCML(package=collective.js.jqueryui)
         self.loadZCML(package=uwosh.transitionbuttons)
 
     def setUpPloneSite(self, portal):
-        applyProfile(portal, 'collective.js.jqueryui:default')
         applyProfile(portal, 'uwosh.transitionbuttons:default')
         setRoles(portal, TEST_USER_ID, ['Manager'])
         import transaction
