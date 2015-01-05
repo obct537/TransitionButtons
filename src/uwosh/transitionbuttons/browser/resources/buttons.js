@@ -18,10 +18,11 @@
         var json = $('#buttonJson').text();
         var settings = jQuery.parseJSON( json );
 
-        if( settings.length < 1 )
+        if( $.isEmptyObject(settings) )
         {
             return 0;
         }
+
         var stateDescription = settings.stateDescription;
         var allowed_transitions = settings.allowedTransitions;
         var state = settings.wfState;
@@ -86,9 +87,15 @@
             }
 
         }
+        function setCookie() {
+            var d = new Date();
+            d.setTime(d.getTime() + (24*60*60*1000));
+            var expires = "expires="+d.toUTCString();
+            document.cookie = "buttonsHidden=true; " + expires;
+        }
 
         function removeCookie() {
-            document.cookie = 'buttonsHidden=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+            document.cookie = 'buttonsHidden=; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
         }
 
         function checkIfHidden() {
@@ -240,8 +247,8 @@
                 showButtons();
             }
             else {
-                 hideButtons();
-                document.cookie="buttonsHidden=true;";   
+                hideButtons();
+                setCookie();  
             }
 
         });

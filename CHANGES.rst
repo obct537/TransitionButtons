@@ -1,5 +1,11 @@
 Changelog
 =========
+0.9.81 (1/5/2015)
+=================
+- Button box no longer shows up broken on a page where the panel isn't allowed.
+- Fixed issues preventing the hide/show cookie from updating properly.
+- hide/show cookie now has an actual timeout :)
+
 0.9.8 (12/1/2014)
 =================
 - Added feature to allow the user to hide the viewlet easily
