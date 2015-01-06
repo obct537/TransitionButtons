@@ -95,7 +95,7 @@
         }
 
         function removeCookie() {
-            document.cookie = 'buttonsHidden=; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+            document.cookie = 'buttonsHidden=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/;';
         }
 
         function checkIfHidden() {
